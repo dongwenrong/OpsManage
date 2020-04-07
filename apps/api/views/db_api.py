@@ -19,7 +19,22 @@ from utils.logger import logger
 from utils.base import method_decorator_adaptor,file_iterator
 from account.models import User
   
-    
+@api_view(['POST'])
+@permission_required('databases.database_can_add_database_server_config',raise_exception=True)
+def db_list(request,format=None):
+    if request.method == 'POST':
+        try:
+            database = DataBase_Server_Config.objects.create(**request.data)
+        except Exception as ex:
+            return Response({"msg":str(ex)}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            snippet = DataBase_Server_Config.objects.get(id=database.id)
+            serializer = serializers.DataBaseServerSerializer(snippet)
+        except DataBase_Server_Config.DoesNotExist:
+            logger.error(msg="添加数据库失败: {ex}".format(ex=str(ex)))
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.data)
+
 @api_view(['GET','PUT', 'DELETE'])
 def db_detail(request, id,format=None):
     try:

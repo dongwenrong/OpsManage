@@ -1912,7 +1912,7 @@
 		            keys: ['y'],
 		            btnClass: 'btn-blue',
 		            action: function () {
-		            	 window.location.href="/user/center/";
+		            	 window.location.href="/account/user/center/";
 		            }
 		        },
 		        no: {
@@ -1934,7 +1934,7 @@
 		            keys: ['y'],
 		            btnClass: 'btn-blue',
 		            action: function () {
-		            	 window.location.href="/user/center/";
+		            	 window.location.href="/account/user/center/";
 		            }
 		        },
 		        no: {

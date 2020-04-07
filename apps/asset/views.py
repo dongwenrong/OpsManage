@@ -57,6 +57,7 @@ class AssetsModf(LoginRequiredMixin,AssetsSource,View):
     login_url = '/login/'  
         
     def post(self, request, *args, **kwagrs):
+        #print(request.POST.get('method'))
         fList,sList = self.allowcator(request.POST.get('model'),request)
         if fList:return JsonResponse({'msg':fList,"code":400})               
         return JsonResponse({"code":200,"msg":"资产更新成功","data":[]})   
@@ -253,4 +254,4 @@ class AssetsImport(LoginRequiredMixin,AssetsBase,View):
         fobj.close()
         res = self.import_assets(filename)
         if isinstance(res, str):return JsonResponse({'msg':res,"code":500,'data':[]})
-        return HttpResponseRedirect('/user/center/')       
+        return HttpResponseRedirect('/account/user/center/')

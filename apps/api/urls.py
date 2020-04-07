@@ -74,6 +74,7 @@ urlpatterns = [
             url(r'^db/list/$', db_api.DB_SERVER_LIST.as_view()),
             url(r'^db/custom/sql/$', db_api.DB_SERVER_LIST.as_view()),
             url(r'^db/tree/$', db_api.db_tree),
+            url(r'^db/config/$', db_api.db_list),
             url(r'^db/config/(?P<id>[0-9]+)/$', db_api.db_detail),
             url(r'^db/status/(?P<id>[0-9]+)/$', db_api.db_status),
             url(r'^db/org/(?P<id>[0-9]+)/$', db_api.db_org),

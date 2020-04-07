@@ -808,12 +808,12 @@ class AssetsSource(object):
             sList,resource = self.idSourceList(ids=request.POST.getlist('ids[]'))
             ANS = ANSRunner(resource)  
             ANS.run_model(host_list=sList,module_name='setup',module_args="") 
-            data = ANS.handle_cmdb_data(ANS.get_model_result())            
+            data = ANS.handle_cmdb_data(ANS.get_model_result())
         elif request.POST.get('model')=='setup':
             sList,resource = self.idSource(ids=request.POST.get('ids'))
-            ANS = ANSRunner(resource)  
-            ANS.run_model(host_list=sList,module_name='setup',module_args="")  
-            data = ANS.handle_cmdb_data(ANS.get_model_result())           
+            ANS = ANSRunner(resource)
+            ANS.run_model(host_list=sList,module_name='setup',module_args="")
+            data = ANS.handle_cmdb_data(ANS.get_model_result())
         else:
             sList,resource = self.idSource(ids=request.POST.get('ids'))
             ANS = ANSRunner(resource)  

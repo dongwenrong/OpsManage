@@ -2,6 +2,7 @@
 # _#_ coding:utf-8 _*_  
 from django.db import models
 from asset.models import Business_Tree_Assets    
+from dao.base import AESCharField
 
 class DataBase_Server_Config(models.Model):
     env_type = (
@@ -45,7 +46,7 @@ class DataBase_Server_Config(models.Model):
     db_business = models.IntegerField(verbose_name='业务关联')
     db_mode = models.CharField(max_length=10,choices=mode,verbose_name='架构类型',default='single')
     db_user = models.CharField(max_length=100,verbose_name='用户',blank=True,null=True)
-    db_passwd = models.CharField(max_length=100,verbose_name='密码',blank=True,null=True)
+    db_passwd = AESCharField(max_length=200,verbose_name='密码',blank=True,null=True)
     db_port = models.IntegerField(verbose_name='端口')
     db_version =  models.CharField(max_length=100,verbose_name='数据库版本',blank=True,null=True)
     db_mark =  models.CharField(max_length=100,verbose_name='标识',blank=True,null=True)
@@ -69,6 +70,7 @@ class DataBase_Server_Config(models.Model):
         unique_together = (("db_port", "db_assets","db_env","db_business"))
         verbose_name = '数据库管理'  
         verbose_name_plural = '数据库信息表'
+        
 
     def business_paths(self):
         try:

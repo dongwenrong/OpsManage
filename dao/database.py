@@ -417,11 +417,11 @@ class DBManage(AssetsBase):
     def exec_sql(self, request):
         
         dbServer = self.__check_user_perms(request,'databases.database_dml_database_server_config')
-     
+        #print(dbServer)
         sql_parse = self.__check_sql_parse(request, allow_sql=self.dml_sql + self.ddl_sql + self.dql_sql,dbname=dbServer.get('db_name'))
-
+        #print(sql_parse)
         if not isinstance(sql_parse, str):              
-            result = self.__get_db_server(request).execute(request.POST.get('sql'),1000)
+            result = self.__get_db_server(dbServer).execute(request.POST.get('sql'),1000)
             time_consume = int(time.time())-self.stime
             self.__record_operation(request, dbServer,time_consume ,result)
             return [{"dataList":result,"time":format_time(time_consume)}]            

@@ -2,23 +2,23 @@
 # _#_ coding:utf-8 _*_ 
 import json, os, gzip
 from celery import task
-from databases.models import (SQL_Execute_Histroy,Database_Detail)
+from databases.models import (SQL_Execute_History,Database_MySQL_Detail)
 from account.models import User_Async_Task, User
 from utils.logger import logger
 from django.utils import timezone
 from utils import base
-from utils.notice import Notice
+from libs.notice import Notice
 from utils.mysql.binlog2sql import Binlog2sql
 
 @task
 def record_exec_sql(exe_user,exe_db,exe_sql,exe_time,
                     exe_effect_row=0,exec_status=None,exe_result=None):
     try:
-        exe_db = Database_Detail.objects.get(id=exe_db)
+        exe_db = Database_MySQL_Detail.objects.get(id=exe_db)
     except Exception as ex:
         return {"status":"failed","msg":str(ex)} 
     try:
-        SQL_Execute_Histroy.objects.create(
+        SQL_Execute_History.objects.create(
                                   exe_user = exe_user,
                                   exe_db = exe_db,
                                   exe_sql = exe_sql,
@@ -48,7 +48,7 @@ def export_table(task_id):
         return {"status":"failed","msg":str(ex)}
 
     try:
-        exe_db = Database_Detail.objects.get(id=task.extra_id)
+        exe_db = Database_MySQL_Detail.objects.get(id=task.extra_id)
         db, table, where_claus = exe_db.to_connect(), args.get("value").split("|")[1], args.get("vars") 
         if len(where_claus) == 0:where_claus = None
     except Exception as ex:

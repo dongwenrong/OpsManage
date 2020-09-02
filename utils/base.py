@@ -14,26 +14,6 @@ from .logger import logger
 from functools import wraps
 import ply.lex as lex, re
 
-def extract_table_name_from_sql(sql_str):
-    q = re.sub(r"/\*[^*]*\*+(?:[^*/][^*]*\*+)*/", "", sql_str)
-
-    lines = [line for line in q.splitlines() if not re.match("^\s*(--|#)", line)]
-
-    q = " ".join([re.split("--|#", line)[0] for line in lines])
-
-    tokens = re.split(r"[\s)(;]+", q)
-
-    result = []
-    get_next = False
-    for token in tokens:
-        if get_next:
-            if token.lower() not in ["", "select"]:
-                result.append(token)
-            get_next = False
-        get_next = token.lower() in ["from", "join","into","table","update","desc"]
-
-    return result
-
 def method_decorator_adaptor(adapt_to, *decorator_args, **decorator_kwargs):
     def decorator_outer(func):
         @wraps(func)
@@ -56,6 +36,13 @@ def file_iterator(file_name, chunk_size=512):
             break 
     f.close()
 
+def format_time(seconds):
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)  
+    d, m = divmod(h, 24) 
+    if d > 1:
+        return "%02d 天" % d
+    return "%02d:%02d:%02d" % (h, m, s)
   
 def radString(length=8,chars=string.ascii_letters+string.digits):
     return ''.join([choice(chars) for i in range(length)])
@@ -69,7 +56,11 @@ def exec_command(cmd, timeout=None):
         result.kill()
         return (256, str(ex).replace(cmd,""))
     code = result.returncode
+<<<<<<< HEAD
     if code != 0 and stderr is not None:
+=======
+    if code != 0 and stderr:
+>>>>>>> upstream/v3
         return code, stderr.decode('utf-8')
     return code, stdout.decode('utf-8')
 

@@ -1,1 +1,7 @@
-﻿
+2020-09-02 16:13:00 [ERROR] sqlpool.py[line:60] 数据库查询失败: (1193, "Unknown system variable 'innodb_additional_mem_pool_size'")
+2020-09-02 16:13:00 [ERROR] sqlpool.py[line:60] 数据库查询失败: (1193, "Unknown system variable 'innodb_additional_mem_pool_size'")
+2020-09-02 16:13:07 [ERROR] sqlpool.py[line:60] 数据库查询失败: (1193, "Unknown system variable 'innodb_additional_mem_pool_size'")
+2020-09-02 16:13:13 [ERROR] sqlpool.py[line:60] 数据库查询失败: (1193, "Unknown system variable 'innodb_additional_mem_pool_size'")
+2020-09-02 16:13:59 [ERROR] sqlpool.py[line:60] 数据库查询失败: (1193, "Unknown system variable 'innodb_additional_mem_pool_size'")
+2020-09-02 16:17:28 [ERROR] sqlpool.py[line:240] (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'da show tables' at line 1")
+2020-09-02 16:17:41 [ERROR] sqlpool.py[line:240] (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1")

@@ -56,11 +56,11 @@ def exec_command(cmd, timeout=None):
         result.kill()
         return (256, str(ex).replace(cmd,""))
     code = result.returncode
-<<<<<<< HEAD
-    if code != 0 and stderr is not None:
-=======
+#<<<<<<< HEAD
+#    if code != 0 and stderr is not None:
+#=======
     if code != 0 and stderr:
->>>>>>> upstream/v3
+#>>>>>>> upstream/v3
         return code, stderr.decode('utf-8')
     return code, stdout.decode('utf-8')
 

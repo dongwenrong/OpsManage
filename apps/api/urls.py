@@ -84,26 +84,26 @@ urlpatterns = [
             url(r'^sched/celery/(?P<id>[0-9]+)/$', celery_api.celery_task_detail),    
             url(r'^sched/celery/result/$', celery_api.CeleryTaskResultList.as_view()),  
             url(r'^sched/celery/result/(?P<id>[0-9]+)/$', celery_api.celery_task_result_detail),                
-<<<<<<< HEAD
-            url(r'^host/vars/(?P<id>[0-9]+)/$', deploy_api.deploy_host_vars),
-            url(r'^db/list/$', db_api.DB_SERVER_LIST.as_view()),
-            url(r'^db/custom/sql/$', db_api.DB_SERVER_LIST.as_view()),
-            url(r'^db/tree/$', db_api.db_tree),
-            url(r'^db/config/$', db_api.db_list),
-            url(r'^db/config/(?P<id>[0-9]+)/$', db_api.db_detail),
-            url(r'^db/status/(?P<id>[0-9]+)/$', db_api.db_status),
-            url(r'^db/org/(?P<id>[0-9]+)/$', db_api.db_org),
-            url(r'^db/server/(?P<pk>[0-9]+)/list/$', db_api.DB_SERVER_DETAIL.as_view()),
-            url(r'^db/server/(?P<pk>[0-9]+)/sync/$', db_api.DB_SERVER_TABLES.as_view()),
-            url(r'^db/server/(?P<sid>[0-9]+)/db/(?P<id>[0-9]+)/$', db_api.db_server_db_detail),
-            url(r'^db/server/(?P<sid>[0-9]+)/db/(?P<did>[0-9]+)/dict/$', db_api.DB_DATA_DICT.as_view()),
-            url(r'^db/user/list/$', db_api.DB_USER_DB_LIST.as_view()),
-            url(r'^db/user/(?P<uid>[0-9]+)/$', db_api.DB_USER_DB.as_view()),
-            url(r'^db/user/(?P<uid>[0-9]+)/server/(?P<sid>[0-9]+)/db/$', db_api.DB_USER_SERVER_DBLIST.as_view()),
-            url(r'^db/user/(?P<uid>[0-9]+)/db/(?P<did>[0-9]+)/table/$', db_api.db_user_db_table_list),
-            url(r'^db/user/(?P<uid>[0-9]+)/db/(?P<did>[0-9]+)/sql/$', db_api.DB_USER_SERVER_DBSQL.as_view()),
-=======
-                       
+#<<<<<<< HEAD
+#            url(r'^host/vars/(?P<id>[0-9]+)/$', deploy_api.deploy_host_vars),
+#            url(r'^db/list/$', db_api.DB_SERVER_LIST.as_view()),
+#            url(r'^db/custom/sql/$', db_api.DB_SERVER_LIST.as_view()),
+#            url(r'^db/tree/$', db_api.db_tree),
+#            url(r'^db/config/$', db_api.db_list),
+#            url(r'^db/config/(?P<id>[0-9]+)/$', db_api.db_detail),
+#            url(r'^db/status/(?P<id>[0-9]+)/$', db_api.db_status),
+#            url(r'^db/org/(?P<id>[0-9]+)/$', db_api.db_org),
+#            url(r'^db/server/(?P<pk>[0-9]+)/list/$', db_api.DB_SERVER_DETAIL.as_view()),
+#            url(r'^db/server/(?P<pk>[0-9]+)/sync/$', db_api.DB_SERVER_TABLES.as_view()),
+#            url(r'^db/server/(?P<sid>[0-9]+)/db/(?P<id>[0-9]+)/$', db_api.db_server_db_detail),
+#            url(r'^db/server/(?P<sid>[0-9]+)/db/(?P<did>[0-9]+)/dict/$', db_api.DB_DATA_DICT.as_view()),
+#            url(r'^db/user/list/$', db_api.DB_USER_DB_LIST.as_view()),
+#            url(r'^db/user/(?P<uid>[0-9]+)/$', db_api.DB_USER_DB.as_view()),
+#            url(r'^db/user/(?P<uid>[0-9]+)/server/(?P<sid>[0-9]+)/db/$', db_api.DB_USER_SERVER_DBLIST.as_view()),
+#            url(r'^db/user/(?P<uid>[0-9]+)/db/(?P<did>[0-9]+)/table/$', db_api.db_user_db_table_list),
+#            url(r'^db/user/(?P<uid>[0-9]+)/db/(?P<did>[0-9]+)/sql/$', db_api.DB_USER_SERVER_DBSQL.as_view()),
+#=======
+#                       
             #MySQL管理模块API接口
             url(r'db/mysql/list/$', mysql_api.DB_SERVER_LIST.as_view()),
             url(r'db/mysql/custom/sql/$', mysql_api.DB_CUSTOM_SQL.as_view()),
@@ -122,7 +122,7 @@ urlpatterns = [
             url(r'db/mysql/user/(?P<uid>[0-9]+)/db/(?P<did>[0-9]+)/sql/$', mysql_api.DB_USER_SERVER_DBSQL.as_view()),
             url(r'^logs/sql/$', mysql_api.DatabaseExecuteHistory.as_view()),   
             url(r'^logs/sql/(?P<id>[0-9]+)/$', mysql_api.DatabaseExecuteHistoryDetail.as_view()),             
->>>>>>> upstream/v3
+#>>>>>>> upstream/v3
             
             #Redis管理模块API接口
             url(r'db/redis/list/$', redis_api.REDIS_SERVER_LIST.as_view()),
